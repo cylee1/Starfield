@@ -1,15 +1,42 @@
-//your code here
+NormalParticle [] squares;
 void setup()
 {
-	//your code here
+	size(300,250);
+	squares = new NormalParticle[100];
+	for(int i = 0; i < squares.length; i++)
+	{
+		squares[i] = new NormalParticle();
+	}
 }
 void draw()
 {
-	//your code here
+	background(0);
+	for(int i = 0; i < squares.length; i++)
+	{
+		squares[i].show();
+		squares[i].move();
+	}
 }
 class NormalParticle
 {
-	//your code here
+	double dX, dY, dAngle, dColor;
+	int dSpeed;
+	NormalParticle()
+	{
+		dX = 150;
+		dY = 125;
+	}
+	void move()
+	{
+		dX = dX + (Math.cos(2.03)*1);
+		dY = dY - (Math.sin(2.03)*1);
+	}
+	void show()
+	{
+		fill(255);
+		noStroke();
+		rect((float)dX,(float)dY,4,4);
+	}
 }
 interface Particle
 {
