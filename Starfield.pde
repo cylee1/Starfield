@@ -19,17 +19,20 @@ void draw()
 }
 class NormalParticle
 {
-	double dX, dY, dAngle, dColor;
-	int dSpeed;
+	double dX, dY, dAngle, dColor, dSpeed;
+	//int dSpeed;
 	NormalParticle()
 	{
 		dX = 150;
 		dY = 125;
+		dSpeed = (int)(Math.random()*100)-10;
+		dAngle = (Math.cos(2.03)*1);
 	}
 	void move()
 	{
-		dX = dX + (Math.cos(2.03)*1);
-		dY = dY - (Math.sin(2.03)*1);
+		//dX = dX + dSpeed * (Math.random()*Math.cos(2.03)*1);
+		dY = dX + dSpeed * (Math.random()*Math.sin(2.03)*1);
+		dX = dX + dSpeed * dAngle;
 	}
 	void show()
 	{
@@ -40,9 +43,10 @@ class NormalParticle
 }
 interface Particle
 {
-	//your code here
+//	public void show();
+//	public void move();
 }
-class OddballParticle //uses an interface
+class OddballParticle //uses interface
 {
 	//your code here
 }
