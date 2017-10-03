@@ -26,13 +26,12 @@ class NormalParticle
 		dX = 150;
 		dY = 125;
 		dSpeed = (int)(Math.random()*100)-10;
-		dAngle = (Math.cos(2.03)*1);
+		dAngle = (Math.random()*360)+1;
 	}
 	void move()
 	{
-		//dX = dX + dSpeed * (Math.random()*Math.cos(2.03)*1);
-		dY = dX + dSpeed * (Math.random()*Math.sin(2.03)*1);
-		dX = dX + dSpeed * dAngle;
+		dX = dX + dSpeed * (Math.random()Math.sin(dAngle)+1;
+		dY = dY + dSpeed * (Math.random()Math.cos(dAngle)+1;
 	}
 	void show()
 	{
