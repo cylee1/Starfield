@@ -1,56 +1,78 @@
-NormalParticle [] squares;
+Particle [] particles;
 void setup()
 {
 	size(300,250);
-	squares = new NormalParticle[100];
-	for(int i = 0; i < squares.length; i++)
+	particles = new Particle[200];
+	for(int i = 0; i < particles.length; i++)
 	{
-		squares[i] = new NormalParticle();
+		particles[i] = new NormalParticle();
 	}
+	particles[0] = new OddballParticle();
+	frameRate(50);
 }
+
 void draw()
 {
-	background(0);
-	for(int i = 0; i < squares.length; i++)
+	background(224,255,255);
+	for(int i = 0; i < particles.length; i++)
 	{
-		squares[i].show();
-		squares[i].move();
+		particles[i].show();
+		particles[i].move();
 	}
 }
-class NormalParticle
+
+interface Particle
 {
-	double dX, dY, dAngle, dColor, dSpeed;
-	//int dSpeed;
+	public void move();
+	public void show();
+}
+
+class NormalParticle implements Particle
+{
+	double dX, dY, dAngle;
+	int dSpeed;
 	NormalParticle()
 	{
 		dX = 150;
 		dY = 125;
-		dSpeed = (int)(Math.random()*100)-10;
-		dAngle = (Math.random()*360)+1;
+		dSpeed = (int)(Math.random()*3)+1;
+		dAngle = Math.PI*2*Math.random();
 	}
-	void move()
+	public void move()
 	{
-		dX = dX + dSpeed * (Math.random()Math.sin(dAngle)+1;
-		dY = dY + dSpeed * (Math.random()Math.cos(dAngle)+1;
+		dX = dX + dSpeed * (Math.random()*Math.sin(dAngle));
+		dY = dY + dSpeed * (Math.random()*Math.cos(dAngle));
 	}
-	void show()
+	public void show()
 	{
-		fill(255);
+		//fill((float)(Math.random()*100)+1, (float)(Math.random()*205)+50, (float)(Math.random()*55)+200);
+		fill((float)(Math.random()*255)+1, (float)(Math.random()*55)+200, 255, (float)(Math.random()*20)+150);
 		noStroke();
-		rect((float)dX,(float)dY,4,4);
+		rect((float)dX,(float)dY,3,3);
 	}
 }
-interface Particle
+
+class OddballParticle implements Particle
 {
-//	public void show();
-//	public void move();
-}
-class OddballParticle //uses interface
-{
-	//your code here
+	double sX, sY;
+	OddballParticle()
+	{
+		sX = (Math.random()*150)+75;
+		sY = (Math.random()*125)+75;
+	}
+	public void move()
+	{
+		sX = (Math.random()*300)+1;
+		sY = (Math.random()*250)+1;
+	}
+	public void show()
+	{
+		fill(0,10,10,(float)(Math.random()*10)+200);
+		noStroke();
+		rect((float)sX,(float)sY,7,7);
+	}
 }
 class JumboParticle //uses inheritance
 {
 	//your code here
 }
-
