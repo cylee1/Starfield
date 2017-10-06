@@ -8,6 +8,7 @@ void setup()
 		particles[i] = new NormalParticle();
 	}
 	particles[0] = new OddballParticle();
+	particles[1] = new JumboParticle();
 	frameRate(50);
 }
 
@@ -62,17 +63,22 @@ class OddballParticle implements Particle
 	}
 	public void move()
 	{
-		sX = (Math.random()*300)+1;
-		sY = (Math.random()*250)+1;
+		sX = (Math.random()*25)+130;
+		sY = (Math.random()*25)+115;
 	}
 	public void show()
 	{
-		fill(0,10,10,(float)(Math.random()*10)+200);
+		fill(100,100,255);
 		noStroke();
-		rect((float)sX,(float)sY,7,7);
+		rect((float)sX,(float)sY,6,6);
 	}
 }
-class JumboParticle //uses inheritance
+class JumboParticle extends NormalParticle
 {
-	//your code here
+	public void show()
+	{
+		fill(0);
+		noStroke();
+		rect((float)dX,(float)dY,6,6);
+	}
 }
